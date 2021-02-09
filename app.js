@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 
+app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-    res.send("<h1>This is my first Express project.</h1>");
+    res.render("index");
 });
 
 app.get('/hello', (req, res) => {
