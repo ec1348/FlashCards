@@ -7,8 +7,8 @@ app.get('/', (req, res) => {
     res.render("index");
 });
 
-app.get('/hello', (req, res) => {
-    res.send("<h1>Hello student, this is my first Express project.</h1>");
+app.get('/cards', (req, res) => {
+    res.render("card", {prompt : "Who is buried in Grant's tomb?"});
 });
 
 app.listen(3000, () => {
