@@ -6,11 +6,12 @@ html(lang="en")
     header
       h1 Flash Cards
     section#content
+      ul 
+        each color in colors 
+          li= color
       h2= prompt
       if hint 
         p 
           i Hint: #{hint}
-      else
-        p (There is no hint.)
     footer
       p An app to help you study
