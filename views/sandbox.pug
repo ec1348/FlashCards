@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    title passing value to template
+  body
+    header
+      h1 passing value to template
+    if names
+        table 
+            tr 
+                th First Name 
+                th Last Name
+            each name in names 
+                tr 
+                    if name.first 
+                        td= name.first 
+                    else 
+                        td= "N/A"
+                    if name.last 
+                        td= name.last 
+                    else 
+                        td= "N/A"
+    section#content
+      h2 Welcome student !
+    footer
+      p An app to help you study

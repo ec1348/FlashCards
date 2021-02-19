@@ -8,7 +8,15 @@ const colors = [
     'green',
     'blue',
     'purple'
-  ];
+    ];
+
+const names = [
+    {first: "ERIC", last: "CHEN"},
+    {first: "JACK", last: "LEE"},
+    {first: "DANIAL", last: "WANG"},
+    {first: "JOHNSON", last: "LIN"},
+    {first: "PETER", last: "CHEN"}
+    ];
 
 app.set('view engine', 'pug');
 
@@ -18,6 +26,10 @@ app.get('/', (req, res) => {
 
 app.get('/cards', (req, res) => {
     res.render("card", {prompt : "Who is buried in Grant's tomb?", colors});
+});
+
+app.get('/sandbox', (req, res) => {
+    res.render("sandbox", {names});
 });
 
 app.listen(3000, () => {
