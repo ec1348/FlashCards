@@ -1,10 +1,6 @@
-doctype html
-html(lang="en")
-  head
-    title passing value to template
-  body
-    header
-      h1 passing value to template
+extends layout.pug
+
+block content
     if names
         table 
             tr 
@@ -22,5 +18,3 @@ html(lang="en")
                         td= "N/A"
     section#content
       h2 Welcome student !
-    footer
-      p An app to help you study
