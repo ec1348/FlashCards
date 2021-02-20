@@ -32,6 +32,14 @@ app.get('/sandbox', (req, res) => {
     res.render("sandbox", {names});
 });
 
+app.get('/hello', (req, res) => {
+    res.render("hello");
+});
+
+app.post('/hello', (req, res) => {
+    res.render("hello");
+});
+
 app.listen(3000, () => {
     console.log("This application is running on localhost: 3000!");var now = new Date();
     // convert date to a string in UTC timezone format:
