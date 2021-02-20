@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(cookieParser());
 
 const colors = [
     'red',
@@ -38,10 +40,11 @@ app.get('/sandbox', (req, res) => {
 });
 
 app.get('/hello', (req, res) => {
-    res.render("hello");
+    res.render("hello", {name: req.cookies.username});
 });
 
 app.post('/hello', (req, res) => {
+    res.cookie("username", req.body.username);
     res.render("hello", {name : req.body.username});
 });
 
