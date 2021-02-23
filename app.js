@@ -29,12 +29,14 @@ app.set('view engine', 'pug');
 
 
 app.use((req, res, next) =>{
-    req.message = "This message made it.";
-    next();
+    console.log("Hello");
+    const err = new Error("Oops, Something went wrong!");
+    err.status = 500;
+    next(err);
 });
 
 app.use( (req, res, next) =>{
-    console.log(req.message);
+    console.log("World!");
     next();
 });
 
@@ -74,6 +76,12 @@ app.post('/goodbye', (req, res) => {
     res.clearCookie('username');
     res.redirect("/hello");
 });
+
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('error');
+})
 
 app.listen(3000, () => {
     console.log("This application is running on localhost: 3000!");var now = new Date();
