@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const { data } = require('../data/flashcardData.json');
+const { cards } = data;
 
-const colors = [
-    'red',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'purple'
-    ];
-    
-router.get('/', (req, res) => {
-    res.render("card", {prompt : "Who is buried in Grant's tomb?", colors});
+router.get('/:id', (req, res) => {
+    const { side } = req.query;
+    const { id } = req.params;
+    const text = cards[id][side];
+    // console.log(text);
+    const { hint } = cards[id];
+
+    const templateData = {text, hint};
+    res.render("card", templateData);
 });
 
 module.exports = router;
