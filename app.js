@@ -8,15 +8,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
 
-const colors = [
-    'red',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'purple'
-    ];
-
 const names = [
     {first: "ERIC", last: "CHEN"},
     {first: "JACK", last: "LEE"},
@@ -27,9 +18,11 @@ const names = [
 
 app.set('view engine', 'pug');
 
-const routes = require('./routes');
+const mainRoutes = require('./routes');
+const cardRoutes = require('./routes/cards');
 
-app.use(routes);
+app.use(mainRoutes);
+app.use('/cards', cardRoutes);
 
 app.use((req, res, next) =>{
     console.log("Hello");
@@ -51,7 +44,8 @@ app.use((req, res, next) =>{
 
 app.use((err, req, res, next) => {
     res.locals.error = err;
-    res.status(err.status);
+    const status = err.status || 500;
+    res.status(status);
     res.render('error');
 })
 
